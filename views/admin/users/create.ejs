@@ -1,0 +1,24 @@
+<%-include ('../../partials/header') %>
+<body>
+    <%-include ('../../partials/homenavbar') %>
+    <div class="container">
+        <hr>
+        <div class="card mt-4">
+            <div class="card-header">
+                <h2>Criação de admin</h2>
+            </div>
+            <div class="card-body">
+                <form action="/users/create" method="post">
+                    <input type="text" name="name" placeholder="Nickname" class="form-control">
+                    <br>
+                    <input type="email" name="email" placeholder="email@teste.com" class="form-control">
+                    <br>
+                    <input type="password" name="password" placeholder="senha"class="form-control">
+                    <br>
+                    <button type="submit" class="btn btn-success">Criar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<%-include ('../../partials/footer') %>

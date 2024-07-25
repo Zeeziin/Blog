@@ -1,0 +1,45 @@
+<%-include ('../../partials/header') %>
+<body>
+    <%-include ('../../partials/navbar') %>
+    <div class="container">
+        <hr>
+        <h2>Usuários</h2>
+        <a href="/users/create" class="btn btn-success">Criar novo usuário</a>
+        <hr>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>nickname</th>
+                    <th>email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%users.forEach(user=>{%>
+                    <tr>
+                        <td><%=user.id%></td>
+                        <td><%=user.name%></td>
+                        <td><%=user.email%></td>
+                        <td>
+                            <a href="/admin/users/edit/<%=user.id%>" class="btn btn-warning">Editar</a>
+                            <form action="/admin/users/delete" method="post" style="display: inline;" onsubmit="confirmaDelecao(event, this)">
+                                <input type="hidden" value="<%=user.id%>" name="id">
+                                <button class="btn btn-danger">Apagar</button>
+                            </form>
+                        </td>
+                    </tr>
+                <%})%>
+            </tbody>
+        </table>
+    </div>
+</body>
+<script>
+    function confirmaDelecao(event,formulario){
+        event.preventDefault()
+        var decision = confirm('Deseja mesmo apagar esse usuário?')
+        if(decision){
+            formulario.submit()
+        }
+    }
+</script>
+<%-include ('../../partials/footer') %>

@@ -1,0 +1,31 @@
+<%-include ('partials/header') %>
+<body>
+    <%-include ('partials/homenavbar') %>
+    <div class="container">
+        <hr>
+        <%results.articles.rows.forEach(article=>{%>
+            <div class="card">
+                <div class="card-header">
+                    <h4><%=article.title%></h4>
+                </div>
+                <div class="card-body">
+                    <a href="/<%=article.slug%>" class="btn btn-success">Ler artigo</a>
+                </div>
+            </div>
+            <br>
+        <%})%>
+
+        <div class="row">
+            <div class="col col-12">
+                <%if(results.page>1){%>
+                    <a href="/articles/page/<%=page-1%>" style="float: left;">>>>>Prev</a>
+                <%}%>
+                <%if(results.next){%>
+                        <a href="/articles/page/<%=page+1%>" style="float: right;">Next>>>></a>
+                <%}%>
+            </div>
+        </div>
+        <hr>
+    </div>
+</body>
+<%-include ('partials/footer') %>
